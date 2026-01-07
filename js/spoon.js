@@ -6,8 +6,10 @@ class ChemicalSpoon {
         this.element = this.createSpoonElement();
         this.container.appendChild(this.element);
 
-        const x = Math.random() * (window.innerWidth - 300) + 150;
-        const y = Math.random() * (window.innerHeight - 500) + 150;
+
+        // đặt x, y ở vị trí giữa màn thí nghiệm
+        const x = (window.innerWidth) / 2;
+        const y = (window.innerHeight) / 2;
         this.element.style.left = x + 'px';
         this.element.style.top = y + 'px';
 

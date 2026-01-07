@@ -110,16 +110,76 @@ body {
     position: relative;
 }
 
-/* SIDEBAR */
+/* --- SIDEBAR STYLE (Đã cập nhật tính năng Toggle) --- */
+
 #library-sidebar {
+    position: relative; /* Quan trọng để định vị nút Toggle */
     width: var(--sidebar-width);
     background-color: var(--bg-panel);
     border-left: 1px solid var(--border-color);
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    z-index: 90;
+    
+    /* Animation Trượt */
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Khi sidebar bị đóng */
+#library-sidebar.collapsed {
+    width: 0;
+    border-left: none; /* Bỏ viền khi đóng hẳn */
+}
+
+/* Nút Toggle (Cái lẫy) */
+#toggle-sidebar-btn {
+    position: absolute;
+    top: 50%;
+    right: 100%; /* Đẩy nút ra ngoài mép trái của sidebar */
+    transform: translateY(-50%);
+    
+    width: 24px;
+    height: 60px;
+    background-color: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-right: none; /* Bỏ viền phải để liền lạc */
+    border-radius: 8px 0 0 8px; /* Bo tròn góc trái */
+    
+    color: #888;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+    transition: background 0.2s, color 0.2s;
+}
+
+#toggle-sidebar-btn:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Xoay icon mũi tên khi đóng */
+#library-sidebar.collapsed #toggle-sidebar-btn i {
+    transform: rotate(180deg); /* Xoay 180 độ thành mũi tên trái */
+}
+
+/* Wrapper nội dung bên trong (Để ẩn mượt mà) */
+.sidebar-inner {
+    width: var(--sidebar-width); /* Giữ width cố định để nội dung ko bị bóp méo khi sidebar thu nhỏ */
+    height: 100%;
     display: flex;
     flex-direction: column;
-    z-index: 90;
-    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    overflow: hidden; /* Ẩn phần thừa khi cha thu nhỏ */
+    opacity: 1;
+    transition: opacity 0.2s;
 }
+
+#library-sidebar.collapsed .sidebar-inner {
+    opacity: 0; /* Mờ dần nội dung */
+    pointer-events: none; /* Không cho click khi ẩn */
+}
+
 
 .sidebar-tabs {
     display: flex;
@@ -235,4 +295,238 @@ body {
 /* Khi đang kéo */
 .lab-item:active {
     cursor: grabbing;
+}
+
+
+/* =========================================
+   LEFT SIDEBAR (GUIDE) - MODERN STYLE
+   ========================================= */
+
+:root {
+    --guide-width: 300px; /* Rộng hơn chút để chữ không bị bó */
+    --step-line-color: #444;
+    --step-bg-inactive: #333;
+}
+
+#guide-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: var(--guide-width);
+    background-color: var(--bg-panel); /* #1e1e1e */
+    border-right: 1px solid var(--border-color);
+    z-index: 100;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(0);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Trạng thái đóng */
+#guide-sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+#guide-sidebar .sidebar-inner {
+    width: var(--guide-width);
+    min-width: var(--guide-width);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- 1. HEADER --- */
+.guide-header {
+    padding: 20px 24px;
+    background: #252525;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.guide-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+}
+
+.guide-title i {
+    color: var(--accent-color); /* Màu xanh chủ đạo */
+}
+
+.exp-name {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 26px; /* Thụt vào thẳng hàng với chữ */
+}
+
+/* --- 2. CONTENT LIST --- */
+.guide-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 20px;
+}
+
+.step-list {
+    position: relative;
+    padding-left: 10px; /* Chừa chỗ cho đường kẻ dọc */
+}
+
+/* Đường kẻ dọc nối các bước */
+.step-list::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    bottom: 30px;
+    left: 24px; /* Canh giữa vòng tròn */
+    width: 2px;
+    background: var(--step-line-color);
+    z-index: 0;
+}
+
+.step-item {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Vòng tròn số thứ tự */
+.step-indicator {
+    width: 30px;
+    height: 30px;
+    background: var(--step-bg-inactive);
+    border: 2px solid var(--bg-panel); /* Tạo viền giả cắt đường kẻ dọc */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #aaa;
+    flex-shrink: 0; /* Không bị bóp méo */
+    transition: all 0.3s ease;
+}
+
+.step-info {
+    flex: 1;
+    padding-top: 2px; /* Canh chữ ngang hàng với số */
+}
+
+.step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #ccc;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.step-info p {
+    font-size: 13px;
+    color: #777;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- TRẠNG THÁI: ACTIVE (Đang làm) --- */
+.step-item.active .step-indicator {
+    background: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2); /* Hiệu ứng tỏa sáng */
+    border-color: var(--bg-panel);
+}
+
+.step-item.active .step-title {
+    color: #fff;
+}
+
+.step-item.active p {
+    color: #bbb;
+}
+
+/* --- TRẠNG THÁI: COMPLETED (Đã xong) --- */
+.step-item.completed .step-indicator {
+    background: #27ae60; /* Màu xanh lá */
+    color: #fff;
+}
+
+.step-item.completed .step-title {
+    color: #888;
+    text-decoration: line-through; /* Gạch ngang chữ tiêu đề */
+}
+
+.step-item.completed p {
+    opacity: 0.5;
+}
+
+/* --- 3. FOOTER (WARNING BOX) --- */
+.guide-footer {
+    padding: 20px;
+    border-top: 1px solid var(--border-color);
+    background: #1a1a1a;
+}
+
+.status-box.warning {
+    background: rgba(243, 156, 18, 0.1);
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    border-radius: 8px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+}
+
+.status-box.warning i {
+    color: #f39c12; /* Màu cam vàng */
+    font-size: 18px;
+    margin-top: 2px;
+}
+
+.status-box strong {
+    display: block;
+    color: #f39c12;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.status-box p {
+    font-size: 12px;
+    color: #ccc;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* --- 4. BUTTON TOGGLE --- */
+#toggle-guide-btn {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 50px;
+    background: var(--bg-panel);
+    border: 1px solid var(--border-color);
+    border-left: none;
+    border-radius: 0 6px 6px 0;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 4px 0 8px rgba(0,0,0,0.1);
+}
+
+#toggle-guide-btn:hover {
+    background: #333;
+    color: #fff;
+}
+
+#guide-sidebar.collapsed #toggle-guide-btn i {
+    transform: rotate(180deg);
 }

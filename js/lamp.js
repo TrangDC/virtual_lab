@@ -14,8 +14,8 @@ class AlcoholLamp {
         this.container.appendChild(this.capEl);
 
         // Random vị trí
-        const x = Math.random() * (window.innerWidth - 500) + 200;
-        const y = Math.random() * (window.innerHeight - 700) + 200;
+        const x = (window.innerWidth) / 2;
+        const y = (window.innerHeight) / 2;
         
         // Đặt vị trí ban đầu cho cả 2 trùng nhau
         this.setPosition(this.bodyEl, x, y);

@@ -128,3 +128,24 @@ document.querySelectorAll('.library-item').forEach(item => {
         if(type) e.dataTransfer.setData('text/plain', type);
     });
 });
+
+// --- XỬ LÝ ĐÓNG/MỞ SIDEBAR ---
+const toggleBtn = document.getElementById('toggle-sidebar-btn');
+const sidebar = document.getElementById('library-sidebar');
+
+if (toggleBtn && sidebar) {
+    toggleBtn.addEventListener('click', () => {
+        // Thêm hoặc bỏ class 'collapsed'
+        sidebar.classList.toggle('collapsed');
+    });
+}
+
+// --- XỬ LÝ ĐÓNG/MỞ SIDEBAR TRÁI (HƯỚNG DẪN) ---
+const toggleGuideBtn = document.getElementById('toggle-guide-btn');
+const guideSidebar = document.getElementById('guide-sidebar');
+
+if (toggleGuideBtn && guideSidebar) {
+    toggleGuideBtn.addEventListener('click', () => {
+        guideSidebar.classList.toggle('collapsed');
+    });
+}
