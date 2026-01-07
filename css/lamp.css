@@ -1,0 +1,80 @@
+/* lamp.css */
+
+/* Class chung cho các bộ phận của đèn */
+.lamp-part {
+    position: absolute;
+    width: 410px;
+    height: 600px;
+    pointer-events: none;
+    overflow: visible !important; 
+    user-select: none;
+    transform: translate(-50%, -50%); /* Căn tâm */
+    
+    /* QUAN TRỌNG: Không dùng will-change ở đây để tránh lệch hình giữa nắp và thân */
+}
+
+/* Layer: Nắp nằm trên thân */
+.lamp-part.is-body { z-index: 30; }
+.lamp-part.is-cap { z-index: 31; }
+
+.lamp-part svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible !important; 
+}
+
+/* Các group chính có thể tương tác */
+#group-lamp, #group-cap {
+    pointer-events: all;
+    cursor: grab;
+}
+
+#group-lamp:active, #group-cap:active {
+    cursor: grabbing;
+}
+
+/* Vùng click bấc đèn */
+#wick-trigger {
+    cursor: pointer;
+    pointer-events: all;
+    fill: transparent;
+}
+
+#wick-trigger:hover {
+    stroke: rgba(255, 255, 255, 0.3);
+    stroke-width: 2px;
+}
+
+/* Animation lửa */
+#flame-physics {
+    opacity: 0;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.lit #flame-physics {
+    opacity: 1;
+}
+
+@keyframes flame-burn-inner {
+    0% { transform: scaleY(1) scaleX(1); }
+    25% { transform: scaleY(1.1) scaleX(0.95); }
+    50% { transform: scaleY(0.95) scaleX(1.02); }
+    75% { transform: scaleY(1.05) scaleX(0.98); }
+    100% { transform: scaleY(1) scaleX(1); }
+}
+
+@keyframes flame-flicker {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 1; }
+}
+
+#flame-natural-motion {
+    transform-origin: 205px 190px;
+    animation: flame-burn-inner 0.2s ease-in-out infinite alternate;
+}
+
+#flame-outer {
+    animation: flame-flicker 0.1s infinite;
+}

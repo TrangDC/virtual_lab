@@ -1,0 +1,35 @@
+/* sodium.css */
+
+.sodium-part {
+    position: absolute;
+    /* Điều chỉnh kích thước khung chứa sau khi crop */
+    width: 170px;  /* Tăng độ rộng thực tế */
+    height: 280px; /* Chiều cao tương ứng tỉ lệ */
+    
+    overflow: visible !important;
+    pointer-events: none;
+    user-select: none;
+    transform: translate(-50%, -50%);
+}
+
+/* Layering */
+.sodium-part.is-body { z-index: 35; }
+.sodium-part.is-cap { z-index: 34; } /* Nắp nằm dưới để tạo hiệu ứng ẩn trong cổ bình */
+
+.sodium-part svg {
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible !important;
+}
+
+.sodium-cls-1 { display: none; }
+
+#sodium-body, #sodium-cap {
+    pointer-events: all;
+    cursor: grab;
+}
+
+#sodium-body:active, #sodium-cap:active {
+    cursor: grabbing;
+}
