@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nobook Dynamic Lab - Danh sách thí nghiệm</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS riêng cho trang này -->
+    <link rel="stylesheet" href="css/landing.css">
+</head>
+<body>
+
+    <header class="landing-header">
+        <div class="logo-area">
+            <i class="fa-solid fa-flask-vial"></i>
+            <h1>NOBOOK DYNAMIC LAB</h1>
+        </div>
+        <p>Chọn bài thí nghiệm để bắt đầu thực hành ảo</p>
+    </header>
+
+    <main class="experiments-container">
+        
+        <!-- THÍ NGHIỆM 1: NA + CL2 -->
+        <!-- Link trỏ đến lab.html kèm tham số exp=na-cl -->
+        <a href="lab.html?exp=na-cl" class="exp-card">
+            <div class="exp-thumbnail">
+                <!-- SVG Minh họa đơn giản -->
+                <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#2a2a2a"/>
+                    <!-- Bình Clo -->
+                    <g transform="translate(160, 20) scale(0.4)">
+                         <path d="M242,174 V87 H173 V174 L111,342 A29,29 0 0,0 110,352 C109,380 153,388 206,388 S302,380 301,352 A13,13 0 0,0 301,351 Z" fill="#eff2c3" stroke="#999" stroke-width="5"/>
+                    </g>
+                    <!-- Lọ Natri -->
+                    <g transform="translate(60, 80) scale(0.35)">
+                        <rect x="160" y="210" width="90" height="40" fill="#408ddb"/>
+                        <text x="185" y="238" font-size="24" fill="white" font-family="Arial" font-weight="bold">Na</text>
+                        <path d="M168,110 L170,150 L130,200 L130,340 A10,10 0 0,0 140,350 H270 A10,10 0 0,0 280,340 V200 L240,150 L242,110 Z" fill="rgba(255,255,255,0.2)" stroke="#fff" stroke-width="5"/>
+                    </g>
+                </svg>
+                <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="exp-info">
+                <h2>Phản ứng Na + Cl₂</h2>
+                <p>Thí nghiệm đốt cháy kim loại Natri nóng chảy trong bình khí Clo, tạo ra muối ăn (NaCl).</p>
+                <div class="exp-meta">
+                    <span class="tag"><i class="fa-solid fa-tag"></i> Halogen</span>
+                    <span class="level">Lớp 10</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- THÍ NGHIỆM 2: FE + CL2 -->
+        <!-- Link trỏ đến lab.html kèm tham số exp=fe-cl -->
+        <a href="lab.html?exp=fe-cl" class="exp-card">
+            <div class="exp-thumbnail">
+                <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="100%" height="100%" fill="#2a2a2a"/>
+                    <!-- Bình Clo -->
+                    <g transform="translate(160, 20) scale(0.4)">
+                         <path d="M242,174 V87 H173 V174 L111,342 A29,29 0 0,0 110,352 C109,380 153,388 206,388 S302,380 301,352 A13,13 0 0,0 301,351 Z" fill="#eff2c3" stroke="#999" stroke-width="5"/>
+                    </g>
+                    <!-- Dây Sắt -->
+                    <g transform="translate(80, 50) scale(0.8) rotate(45)">
+                         <rect x="28" y="10" width="6" height="150" fill="#aaa"/>
+                         <path d="M30,160 Q10,180 50,200 Q10,220 50,240" fill="none" stroke="#aaa" stroke-width="4"/>
+                    </g>
+                </svg>
+                <div class="play-overlay"><i class="fa-solid fa-play"></i></div>
+            </div>
+            <div class="exp-info">
+                <h2>Phản ứng Fe + Cl₂</h2>
+                <p>Quan sát dây sắt nung nóng cháy trong khí Clo tạo thành khói màu nâu đỏ (FeCl₃).</p>
+                <div class="exp-meta">
+                    <span class="tag"><i class="fa-solid fa-tag"></i> Halogen</span>
+                    <span class="level">Lớp 10</span>
+                </div>
+            </div>
+        </a>
+
+    </main>
+
+    <footer class="landing-footer">
+        <p>&copy; 2025 Virtual Lab. Developed for Education.</p>
+    </footer>
+
+</body>
+</html>
