@@ -48,7 +48,7 @@
         </div>
 
         <div class="header-center">
-            <span>NOBOOK DYNAMIC LAB</span>
+            <span>VIRTUAL LAB</span>
         </div>
 
         <div class="header-right">
@@ -60,6 +60,89 @@
 
     <!-- MAIN WORKSPACE -->
     <main id="workspace">
+
+        <!-- [MỚI] Sidebar Hướng dẫn (Bên trái) -->
+        <aside id="guide-sidebar">
+            <!-- Nút Toggle -->
+            <button id="toggle-guide-btn" title="Đóng/Mở hướng dẫn">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="sidebar-inner">
+                <!-- HEADER -->
+                <div class="guide-header">
+                    <div class="guide-title">
+                        <i class="fa-solid fa-book-open"></i> 
+                        <span>QUY TRÌNH</span>
+                    </div>
+                    <div class="exp-name">Na + Cl₂</div>
+                </div>
+                
+                <!-- CONTENT: DANH SÁCH BƯỚC -->
+                <div class="guide-content">
+                    <div class="step-list">
+                        <!-- Bước 1: Đã xong -->
+                        <div class="step-item completed">
+                            <div class="step-indicator">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+                            <div class="step-info">
+                                <div class="step-title">Chuẩn bị</div>
+                                <p>Chuẩn bị đèn cồn, bật lửa và các dụng cụ cần thiết.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bước 2: Đang thực hiện (Active) -->
+                        <div class="step-item active">
+                            <div class="step-indicator">2</div>
+                            <div class="step-info">
+                                <div class="step-title">Lấy hóa chất</div>
+                                <p>Dùng muỗng lấy một mẩu Natri nhỏ (bằng hạt đậu).</p>
+                            </div>
+                        </div>
+
+                        <!-- Bước 3: Chưa làm -->
+                        <div class="step-item">
+                            <div class="step-indicator">3</div>
+                            <div class="step-info">
+                                <div class="step-title">Đun nóng</div>
+                                <p>Đun nóng Natri trên ngọn lửa đèn cồn đến khi nóng chảy.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bước 4 -->
+                        <div class="step-item">
+                            <div class="step-indicator">4</div>
+                            <div class="step-info">
+                                <div class="step-title">Phản ứng</div>
+                                <p>Đưa nhanh muỗng Natri đang nóng chảy vào bình khí Clo.</p>
+                            </div>
+                        </div>
+
+                        <!-- Bước 5 -->
+                        <div class="step-item">
+                            <div class="step-indicator">5</div>
+                            <div class="step-info">
+                                <div class="step-title">Quan sát</div>
+                                <p>Quan sát hiện tượng và màu khói tạo thành.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- FOOTER: CẢNH BÁO -->
+                <div class="guide-footer">
+                    <div class="status-box warning">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div>
+                            <strong>Lưu ý an toàn:</strong>
+                            <p>Khí Clo rất độc. Thực hiện trong tủ hút nếu có thể.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
         <!-- Khu vực bàn thí nghiệm -->
         <section id="canvas-area">
             <div id="simulation-container">
@@ -68,99 +151,100 @@
         </section>
 
         <!-- Sidebar thư viện dụng cụ -->
-        <aside id="library-sidebar">
-            <div class="sidebar-tabs">
-                <div class="tab-item active" data-type="all">
-                    <i class="fa-solid fa-flask"></i> Tất cả
+        <aside id="library-sidebar">            
+            <!-- [MỚI] Nút Đóng/Mở Sidebar -->
+            <button id="toggle-sidebar-btn" title="Đóng/Mở thư viện">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <!-- Nội dung bên trong (Giữ nguyên) -->
+            <div class="sidebar-inner">
+                <div class="sidebar-tabs">
+                    <div class="tab-item active" data-type="all">
+                        <i class="fa-solid fa-flask"></i> Tất cả
+                    </div>
+                    <div class="tab-item" data-type="glassware">
+                        <i class="fa-solid fa-vial"></i> Thủy tinh
+                    </div>
+                    <div class="tab-item" data-type="tool">
+                        <i class="fa-solid fa-fire-burner"></i> Dụng cụ
+                    </div>
                 </div>
-                <div class="tab-item" data-type="glassware">
-                    <i class="fa-solid fa-vial"></i> Thủy tinh
+                <div class="sidebar-content">
+                    <div class="search-box">
+                        <input type="text" placeholder="Tìm dụng cụ...">
+                    </div>
+                    <div class="items-grid" id="items-list">
+                        <!-- Đèn cồn -->
+                        <div class="library-item" data-item="alcohol-lamp" title="Kéo hoặc click để thêm đèn cồn">
+                            <svg class="item-preview" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(50,70)">
+                                    <circle cx="0" cy="-40" r="12" fill="#777"/>
+                                    <path d="M0 -40 Q-20 20 0 50 Q20 20 0 -40" fill="#555"/>
+                                    <circle cx="0" cy="20" r="30" fill="#444" opacity="0.7"/>
+                                    <circle cx="0" cy="20" r="25" fill="#333"/>
+                                </g>
+                            </svg>
+                            <span>Đèn cồn</span>
+                        </div>
+                        <!-- Muỗng -->
+                        <div class="library-item" data-item="chemical-spoon" title="Kéo hoặc click để thêm Muỗng">
+                            <svg class="item-preview" viewBox="150 0 100 400" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="p-grad-1" x1="194" y1="197" x2="201" y2="197" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#593021"/><stop offset="1" stop-color="#6d6e71"/></linearGradient>
+                                    <linearGradient id="p-grad-2" x1="169" y1="135" x2="227" y2="135" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#593021"/><stop offset="1" stop-color="#613121"/></linearGradient>
+                                </defs>
+                                <rect x="194" y="16" width="8" height="361" rx="3" fill="url(#p-grad-1)"/>
+                                <path d="M227,115h-57l3,36c0,2,11,4,26,4s26-2,26-4h0Z" fill="url(#p-grad-2)"/>
+                            </svg>
+                            <span>Muỗng lấy hóa chất</span>
+                        </div>                        
+                        <!-- Dây sắt -->
+                        <div class="library-item" data-item="iron-wire" title="Kéo hoặc click để thêm Dây sắt">
+                            <svg class="item-preview" viewBox="0 0 60 200" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="prev-wire-grad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#999"/>
+                                        <stop offset="0.5" stop-color="#fff"/>
+                                        <stop offset="1" stop-color="#777"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="28" y="10" width="4" height="150" fill="url(#prev-wire-grad)"/>
+                                <path d="M30,160 Q30,190 45,180 Q60,170 30,160" fill="none" stroke="#aaa" stroke-width="2"/>
+                            </svg>
+                            <span>Dây sắt</span>
+                        </div>                        
+                        <!-- Bình Chlorine -->
+                        <div class="library-item" data-item="chlorine-flask" title="Kéo hoặc click để thêm Bình Chlorine">
+                            <svg class="item-preview" viewBox="100 0 200 400" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="prev-cl-grad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#fff" stop-opacity="0.8"/>
+                                        <stop offset="1" stop-color="#fff" stop-opacity="0.4"/>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M236,83 A8,8 0 0,1 231,85 H179 A8,8 0 0,1 174,83 L179,132 H231 Z" fill="#ccc"/>
+                                <path d="M242,174 V87 H173 V174 L111,342 A29,29 0 0,0 110,352 C109,380 153,388 206,388 S302,380 301,352 A13,13 0 0,0 301,351 Z" fill="url(#prev-cl-grad)" stroke="#999"/>
+                            </svg>
+                            <span>Bình Chlorine</span>
+                        </div>                        
+                        <!-- Bình Natri -->
+                        <div class="library-item" data-item="sodium-jar" title="Kéo hoặc click để thêm Bình Natri">
+                            <svg class="item-preview" viewBox="100 0 200 400" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient id="prev-na-grad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0" stop-color="#333"/>
+                                        <stop offset="1" stop-color="#666"/>
+                                    </linearGradient>
+                                </defs>
+                                <rect x="170" y="80" width="70" height="30" fill="url(#prev-na-grad)"/>
+                                <path d="M168,110 L170,150 L130,200 L130,340 A10,10 0 0,0 140,350 H270 A10,10 0 0,0 280,340 V200 L240,150 L242,110 Z" fill="rgba(255,255,255,0.3)" stroke="#999"/>
+                                <rect x="160" y="210" width="90" height="40" fill="#408ddb"/>
+                                <text x="195" y="235" font-size="20" fill="white">Na</text>
+                            </svg>
+                            <span>Bình Natri</span>
+                        </div>
+                    </div>    
                 </div>
-                <div class="tab-item" data-type="tool">
-                    <i class="fa-solid fa-fire-burner"></i> Dụng cụ
-                </div>
-            </div>
-
-            <div class="sidebar-content">
-                <div class="search-box">
-                    <input type="text" placeholder="Tìm dụng cụ...">
-                </div>
-
-                <div class="items-grid" id="items-list">
-                    <!-- Đèn cồn -->
-                    <div class="library-item" data-item="alcohol-lamp" title="Kéo hoặc click để thêm đèn cồn">
-                        <svg class="item-preview" viewBox="0 0 100 140" xmlns="http://www.w3.org/2000/svg">
-                            <g transform="translate(50,70)">
-                                <circle cx="0" cy="-40" r="12" fill="#777"/>
-                                <path d="M0 -40 Q-20 20 0 50 Q20 20 0 -40" fill="#555"/>
-                                <circle cx="0" cy="20" r="30" fill="#444" opacity="0.7"/>
-                                <circle cx="0" cy="20" r="25" fill="#333"/>
-                            </g>
-                        </svg>
-                        <span>Đèn cồn</span>
-                    </div>
-
-                    <div class="library-item" data-item="chemical-spoon" title="Kéo hoặc click để thêm Muỗng">
-                        <!-- SVG Preview (Đã thu nhỏ và bỏ nền để làm icon) -->
-                        <svg class="item-preview" viewBox="150 0 100 400" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="p-grad-1" x1="194" y1="197" x2="201" y2="197" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#593021"/><stop offset="1" stop-color="#6d6e71"/></linearGradient>
-                                <linearGradient id="p-grad-2" x1="169" y1="135" x2="227" y2="135" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#593021"/><stop offset="1" stop-color="#613121"/></linearGradient>
-                            </defs>
-                            <rect x="194" y="16" width="8" height="361" rx="3" fill="url(#p-grad-1)"/>
-                            <path d="M227,115h-57l3,36c0,2,11,4,26,4s26-2,26-4h0Z" fill="url(#p-grad-2)"/>
-                        </svg>
-                        <span>Muỗng lấy hóa chất</span>
-                    </div>
-                    <div class="library-item" data-item="iron-wire" title="Kéo hoặc click để thêm Dây sắt">
-                        <svg class="item-preview" viewBox="0 0 60 200" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="prev-wire-grad" x1="0" y1="0" x2="1" y2="0">
-                                    <stop offset="0" stop-color="#999"/>
-                                    <stop offset="0.5" stop-color="#fff"/>
-                                    <stop offset="1" stop-color="#777"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Cán -->
-                            <rect x="28" y="10" width="4" height="150" fill="url(#prev-wire-grad)"/>
-                            <!-- Đầu xoắn -->
-                            <path d="M30,160 Q30,190 45,180 Q60,170 30,160" fill="none" stroke="#aaa" stroke-width="2"/>
-                        </svg>
-                        <span>Dây sắt</span>
-                    </div>
-                    <div class="library-item" data-item="chlorine-flask" title="Kéo hoặc click để thêm Bình Chlorine">
-                        <svg class="item-preview" viewBox="100 0 200 400" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="prev-cl-grad" x1="0" y1="0" x2="1" y2="0">
-                                    <stop offset="0" stop-color="#fff" stop-opacity="0.8"/>
-                                    <stop offset="1" stop-color="#fff" stop-opacity="0.4"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Nắp -->
-                            <path d="M236,83 A8,8 0 0,1 231,85 H179 A8,8 0 0,1 174,83 L179,132 H231 Z" fill="#ccc"/>
-                            <!-- Thân bình -->
-                            <path d="M242,174 V87 H173 V174 L111,342 A29,29 0 0,0 110,352 C109,380 153,388 206,388 S302,380 301,352 A13,13 0 0,0 301,351 Z" fill="url(#prev-cl-grad)" stroke="#999"/>
-                        </svg>
-                        <span>Bình Chlorine</span>
-                    </div>
-                    <div class="library-item" data-item="sodium-jar" title="Kéo hoặc click để thêm Bình Natri">
-                        <svg class="item-preview" viewBox="100 0 200 400" xmlns="http://www.w3.org/2000/svg">
-                            <defs>
-                                <linearGradient id="prev-na-grad" x1="0" y1="0" x2="1" y2="0">
-                                    <stop offset="0" stop-color="#333"/>
-                                    <stop offset="1" stop-color="#666"/>
-                                </linearGradient>
-                            </defs>
-                            <!-- Nắp đen -->
-                            <rect x="170" y="80" width="70" height="30" fill="url(#prev-na-grad)"/>
-                            <!-- Thân bình -->
-                            <path d="M168,110 L170,150 L130,200 L130,340 A10,10 0 0,0 140,350 H270 A10,10 0 0,0 280,340 V200 L240,150 L242,110 Z" fill="rgba(255,255,255,0.3)" stroke="#999"/>
-                            <rect x="160" y="210" width="90" height="40" fill="#408ddb"/>
-                            <text x="195" y="235" font-size="20" fill="white">Na</text>
-                        </svg>
-                        <span>Bình Natri</span>
-                    </div>
-                </div>    
             </div>
         </aside>
     </main>

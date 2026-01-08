@@ -7,8 +7,8 @@ class IronWire {
         this.container.appendChild(this.element);
 
         // Vị trí random
-        const x = Math.random() * (window.innerWidth - 300) + 150;
-        const y = Math.random() * (window.innerHeight - 500) + 150;
+        const x = (window.innerWidth) / 2;
+        const y = (window.innerHeight) / 2;
         this.element.style.left = x + 'px';
         this.element.style.top = y + 'px';
 

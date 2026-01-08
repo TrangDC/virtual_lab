@@ -11,8 +11,8 @@ class ChlorineFlask {
         this.container.appendChild(this.bodyEl);
         this.container.appendChild(this.capEl);
 
-        const x = Math.random() * (window.innerWidth - 400) + 200;
-        const y = Math.random() * (window.innerHeight - 600) + 200;
+        const x = (window.innerWidth) / 2;
+        const y = (window.innerHeight) / 2;
         
         this.setPosition(this.bodyEl, x, y);
         this.setPosition(this.capEl, x, y);
